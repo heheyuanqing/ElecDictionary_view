@@ -8,6 +8,7 @@
         <button>搜索</button>
         <button style="margin-left:10px;">更多单词</button>
     </div>
+    <div class="recommend">推荐的内容待开发</div>
   </div>
 </template>
 <script>
