@@ -1,15 +1,20 @@
 <template>
   <div class="main">
-    <div class="logo"><img width="200" height="100" src="" alt="logo"></div>
+    <div class="logo"><img width="200" height="100" src="../assets/youyong.png" alt="logo"></div>
     <div class="input-part">
       <input type="text" :value="value">
     </div>
     <div class="btn-part">
       <button @click="searchWord">搜索</button>
-      <button style="margin-left:10px;">更多单词</button>
+      <button style="margin-left:10px;">我的词库</button>
     </div>
     <div class="recommend">   
       <div class="content">
+        <word-card></word-card>
+        <word-card></word-card>
+        <word-card></word-card>
+        <word-card></word-card>
+        <word-card></word-card>
         <word-card></word-card>
       </div>
     </div>
@@ -32,6 +37,7 @@ export default {
       const word = this.word;
       this.word="";
       //请求后台搜索
+      alert(111);
     }
   }
 }
