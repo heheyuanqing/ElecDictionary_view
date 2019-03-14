@@ -1,26 +1,51 @@
 <template>
   <div class="main">
-    <div class="logo">LOGO</div>
+    <div class="logo"><img width="200" height="100" src="" alt="logo"></div>
     <div class="input-part">
-      <input type="text">
+      <input type="text" :value="value">
     </div>
     <div class="btn-part">
-        <button>搜索</button>
-        <button style="margin-left:10px;">更多单词</button>
+      <button @click="searchWord">搜索</button>
+      <button style="margin-left:10px;">更多单词</button>
     </div>
-    <div class="recommend">推荐的内容待开发</div>
+    <div class="recommend">   
+      <div class="content">
+        <word-card></word-card>
+      </div>
+    </div>
   </div>
 </template>
 <script>
+import wordCard from './word-card.vue';
+
 export default {
-    
+  components:{
+    wordCard
+  },
+  data(){
+    return {
+      word:""
+    }
+  },
+  methods:{
+    searchWord(){
+      const word = this.word;
+      this.word="";
+      //请求后台搜索
+    }
+  }
 }
 </script>
 <style>
 .main{
   width: 100%;
+}
+.logo{
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 .input-part,.btn-part{
   width:100%;
@@ -40,5 +65,22 @@ button{
   border:0;
   border-radius: 4px;
   background-color: #ffe057;
+}
+.recommend{
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+.content{
+  width:70%;
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.content > div{
+  width:30%;
+  border:1px splid red;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 </style>

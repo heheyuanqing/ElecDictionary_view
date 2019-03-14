@@ -5,11 +5,8 @@
 </template>
 <script>
 export default {
-    data(){
-      return {
-        value:this.props.value  
-      }
-    }
+    props:['value'],
+    
 }
 </script>
 <style>
