@@ -2,15 +2,23 @@
   <div>
     <div class="card">
       <div class=title>word</div>
+      <ul v-if="process">
+        <li>1</li><li>2</li><li>3</li>
+      </ul>
       <div class="pho">音标<span @click="getSound"><img width="20" height="20" src="../assets/pho.png" alt="小喇叭"></span></div>
       <div class="mean">翻译</div>
-      <button @click="addList" v-if="isShow">加入我的词库</button>
+      <button @click="addList">{{btnContent}}</button>
     </div>
   </div>
 </template>
 <script>
 export default {
-  props:['isShow']
+  props:['btnContent','process'],
+  data(){
+    return {
+      num:0
+    }
+  }
 }
 </script>
 <style scoped>
@@ -23,6 +31,10 @@ export default {
 .title{
   font-size:20px;
   font-weight: 500;
+}
+ul li{
+  display: inline-block;
+  margin-left:5px;
 }
 .pho{
     position: relative;
@@ -40,6 +52,6 @@ export default {
 }
 button{
   margin-top: 10px;
-  margin-left: 50%
+  margin-left: 45%;
 }
 </style>

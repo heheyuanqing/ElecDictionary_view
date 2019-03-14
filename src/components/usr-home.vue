@@ -13,12 +13,12 @@
       <div style="width:70%" v-if="haveWord">
         <div class="sel-words"> 我的单词库<button>进入词库</button></div>
         <div class="words-info">
-           <word-card :btnShow="isShow"></word-card>
-           <word-card :btnShow="isShow"></word-card>
-           <word-card :btnShow="isShow"></word-card>
-           <word-card :btnShow="isShow"></word-card>
-           <word-card :btnShow="isShow"></word-card>
-           <word-card :btnShow="isShow"></word-card>
+           <word-card :btnContent="btnContent" :process="true"></word-card>
+           <word-card :btnContent="btnContent" :process="true"></word-card>
+           <word-card :btnContent="btnContent" :process="true"></word-card>
+           <word-card :btnContent="btnContent" :process="true"></word-card>
+           <word-card :btnContent="btnContent" :process="true"></word-card>
+           <word-card :btnContent="btnContent" :process="true"></word-card>
         </div>
       </div>
       <div class="sel-words"  v-else>
@@ -38,7 +38,7 @@ export default {
         name:"gsjdh",
         msg:"每天一个单词",
         haveWord:true,
-        isShow:false
+        btnContent:"删除"
       }
     }
 }

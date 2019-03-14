@@ -10,12 +10,12 @@
     </div>
     <div class="recommend">   
       <div class="content">
-        <word-card></word-card>
-        <word-card></word-card>
-        <word-card></word-card>
-        <word-card></word-card>
-        <word-card></word-card>
-        <word-card></word-card>
+        <word-card :btnContent="btnContent" :process="false"></word-card>
+        <word-card :btnContent="btnContent" :process="false"></word-card>
+        <word-card :btnContent="btnContent" :process="false"></word-card>
+        <word-card :btnContent="btnContent" :process="false"></word-card>
+        <word-card :btnContent="btnContent" :process="false"></word-card>
+        <word-card :btnContent="btnContent" :process="false"></word-card>
       </div>
     </div>
   </div>
@@ -29,7 +29,8 @@ export default {
   },
   data(){
     return {
-      word:""
+      word:"",
+     btnContent:"加入我的词库"
     }
   },
   methods:{
