@@ -4,13 +4,13 @@
       <div class=title>word</div>
       <div class="pho">音标<span @click="getSound"><img width="20" height="20" src="../assets/pho.png" alt="小喇叭"></span></div>
       <div class="mean">翻译</div>
-      <button @click="addList">加入我的词库</button>
+      <button @click="addList" v-if="isShow">加入我的词库</button>
     </div>
   </div>
 </template>
 <script>
 export default {
-  
+  props:['isShow']
 }
 </script>
 <style scoped>

@@ -80,13 +80,11 @@ button{
 .content{
   width:70%;
   display:flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 .content > div{
   width:30%;
-  border:1px splid red;
-  margin-left: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 </style>
