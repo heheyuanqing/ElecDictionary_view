@@ -1,14 +1,15 @@
 <template>
   <div class="main">
-    <div class="title">{{title}}</div>
+    <div class="title"><img width="200" height="100" src="../assets/youyong.png" alt="logo"></div>
     <div class="input-part">
-      <input type="text" :value="value">
-      <input type="text" :value="value">
-      <input type="text" :value="value">
+      <input type="text" :value="value" placeholder="姓名">
+    </div>
+    <div class="input-part">
+      <input type="text" :value="value" placeholder="密码">
     </div>
     <div class="btn-part">
-      <button @click="signIn">登陆</button>
-      <button style="margin-left:10px;">注册</button>
+      <button @click="login">登陆</button>
+      <button style="margin-left:10px;" @click="logup">注册</button>
     </div>
   </div>
 </template>
@@ -20,8 +21,11 @@ export default {
     }
   },
   methods:{
-    sigIn(){
+    login(){
 
+    },
+    logup(){
+      
     }
   }
 }
@@ -41,12 +45,14 @@ export default {
   width:100%;
   display:flex;
   justify-content:center;
+  margin-top: 15px;
 }
 input{
-  width: 40%;
+  width: 30%;
   height: 30px;
   border:1px solid #dddddd;
   border-radius: 6px;
+  padding-left: 10px;
 }
 button{
   margin-top: 15px;
