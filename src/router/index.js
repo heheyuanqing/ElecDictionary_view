@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Header from '@/components/header.vue'
-import SignUsr from '@/components/sign-usr.vue'
+import SignUsr from '@/components/sign-in.vue'
+import SignUpUsr from '@/components/sign-up-usr.vue'
 import Search from '@/components/search.vue'
 import UsrHome from '@/components/usr-home.vue'
 import SelWords from '@/components/usr-words.vue'
@@ -18,9 +19,14 @@ export default new Router({
       component: Search
     },
     {
-      path:'/usr/sign',
-      name:'sign',
-      component:SignUsr
+      path:'/usr/login',
+      name:'sign-in',
+      component:SignInUsr
+    },
+    {
+      path:'/usr/logup',
+      name:'sign-up',
+      component:SignUpUsr
     },
     {
       path:'/usr',

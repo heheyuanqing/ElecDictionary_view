@@ -1,6 +1,6 @@
 # dictionary_views
 
-> A Vue.js project
+>vue + axios + vuex
 
 ## Build Setup
 
@@ -17,3 +17,10 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+
+
+```
+页面优化：
+  1.多个单词卡排列自自适应问题（例：search页面）
+```
+
