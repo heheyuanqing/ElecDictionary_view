@@ -8,7 +8,15 @@
       <button @click="searchWord">搜索</button>
       <button style="margin-left:10px;">我的词库</button>
     </div>
-    <div class="recommend">   
+    <div class="word-part">
+       <div class="result">
+        <word-result :btnContent="btnContent" :process="false"></word-result>
+         <word-result :btnContent="btnContent" :process="false"></word-result>
+          <word-result :btnContent="btnContent" :process="false"></word-result>
+           <word-result :btnContent="btnContent" :process="false"></word-result>
+      </div>
+    </div>
+    <div class="word-part">   
       <div class="content">
         <word-card :btnContent="btnContent" :process="false"></word-card>
         <word-card :btnContent="btnContent" :process="false"></word-card>
@@ -22,10 +30,11 @@
 </template>
 <script>
 import wordCard from './word-card.vue';
-
+import wordResult from './result-card';
 export default {
   components:{
-    wordCard
+    wordCard,
+    wordResult
   },
   data(){
     return {
@@ -73,11 +82,21 @@ button{
   border-radius: 4px;
   background-color: #ffe057;
 }
-.recommend{
+.word-part{
   margin-top: 15px;
   display: flex;
   justify-content: center;
 }
+.result{
+  width: 80%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.result >div{
+  margin-top: 15px;
+}
+
 .content{
   width:70%;
   display:flex;
