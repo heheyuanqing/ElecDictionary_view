@@ -13,7 +13,10 @@
 <script>
   exports.default={
     data(){
-      usrname:"heheyuanqing"
+      usrname:"heheyuanqing",
+      isSearchPage;
+      isHost;
+
     }
   }
 </script>
