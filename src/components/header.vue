@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-  exports.default={
+  export default{
     data(){
       usrname:"heheyuanqing",
       isSearchPage;
