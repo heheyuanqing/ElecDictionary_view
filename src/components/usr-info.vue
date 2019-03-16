@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="center" style="position: relative;">
-      <img src="../assets/avatar.png" alt="avatar" width="200" height="200" @mouseover="changeImg">
+      <img src="../assets/avatar.png" alt="avatar" width="200" height="200" @mouseover="choose">
       <div class="change" v-show="isImg">
-        <input id="file" type="file" @click="upFile">
-        <label for="file">修改头像</label>
+        <label for="file" style="margin-left:5px;">修改头像</label>
+        <input id="file" type="file" @click="upFile" style="opacity:0">
       </div>
     </div>
     <div class="center">
@@ -25,8 +25,11 @@ export default {
       }
     },
     methods:{
-      changeImg(){
-        this.isImg=true;
+      choose(){
+        this.isImg = true;
+      },
+      noChoose(){
+        this.isImg = false;
       },
       upFile(){
 
