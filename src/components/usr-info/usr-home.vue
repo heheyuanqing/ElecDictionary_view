@@ -2,7 +2,7 @@
   <div>
     <div class="center-box">
       <div class="usr-info">
-        <div class="avatar"><img width="100" height="100" src="../assets/avatar.png" alt="头像"></div>
+        <div class="avatar"><img width="100" height="100" src="../../assets/avatar.png" alt="头像"></div>
         <div class="usr-name">{{name}}</div>
         <div class="everyday-word">
           <div>{{msg}}</div>
@@ -28,7 +28,7 @@
   </div>
 </template>
 <script>
-import wordCard from './word-card';
+import wordCard from '../word-card';
 export default {
     components:{
       wordCard

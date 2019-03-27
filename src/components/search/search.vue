@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="logo"><img width="200" height="100" src="../assets/youyong.png" alt="logo"></div>
+    <div class="logo"><img width="200" height="100" src="../../assets/youyong.png" alt="logo"></div>
     <div class="input-part">
       <input type="text" :value="value">
     </div>
@@ -9,14 +9,11 @@
       <button style="margin-left:10px;">我的词库</button>
     </div>
     <div class="word-part">
-       <div class="result">
+      <div class="result">
         <word-result :btnContent="btnContent" :process="false"></word-result>
-         <word-result :btnContent="btnContent" :process="false"></word-result>
-          <word-result :btnContent="btnContent" :process="false"></word-result>
-           <word-result :btnContent="btnContent" :process="false"></word-result>
       </div>
     </div>
-    <div class="word-part">   
+    <div class="word-part">
       <div class="content">
         <word-card :btnContent="btnContent" :process="false"></word-card>
         <word-card :btnContent="btnContent" :process="false"></word-card>
@@ -29,25 +26,25 @@
   </div>
 </template>
 <script>
-import wordCard from './word-card.vue';
+import wordCard from '../word-card.vue';
 import wordResult from './result-card';
 export default {
-  components:{
+  components: {
     wordCard,
     wordResult
   },
-  data(){
+  data() {
     return {
-      word:"",
-     btnContent:"加入我的词库"
+      word: '',
+     btnContent: '加入我的词库'
     }
   },
-  methods:{
-    searchWord(){
-      const word = this.word;
-      this.word="";
+  methods: {
+    searchWord() {
+      const word = this.word
+      this.word = ''
       //请求后台搜索
-      alert(111);
+      alert(111)
     }
   }
 }
@@ -93,7 +90,7 @@ button{
   flex-wrap: wrap;
   justify-content: center;
 }
-.result >div{
+.result > div{
   margin-top: 15px;
 }
 

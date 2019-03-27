@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="title"><img width="200" height="100" src="../assets/youyong.png" alt="logo"></div>
+    <div class="title"><img width="200" height="100" src="../../assets/youyong.png" alt="logo"></div>
     <div class="input-part">
       <input type="text" :value="value" placeholder="姓名">
     </div>

@@ -2,7 +2,7 @@
   <div>
     <div class="card" >
       <div class=title>word</div>
-      <div class="pho">音标<span @click="getSound"><img width="20" height="20" src="../assets/pho.png" alt="小喇叭"></span></div>
+      <div class="pho">音标<span @click="getSound"><img width="20" height="20" src="../../assets/pho.png" alt="小喇叭"></span></div>
       <ul v-if="process">
         <li>1</li><li>2</li><li>3</li>
       </ul>

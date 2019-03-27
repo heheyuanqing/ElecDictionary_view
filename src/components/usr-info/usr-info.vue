@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="center" style="position: relative;">
-      <img src="../assets/avatar.png" alt="avatar" width="200" height="200" @mouseover="changeImg">
+      <img src="../../assets/avatar.png" alt="avatar" width="200" height="200" @mouseover="changeImg">
       <div class="change" v-show="isImg">
         <input id="file" type="file" @click="upFile">
         <label for="file">修改头像</label>
