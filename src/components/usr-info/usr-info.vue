@@ -1,11 +1,7 @@
 <template>
   <div>
     <div class="center" style="position: relative;">
-<<<<<<< HEAD:src/components/usr-info/usr-info.vue
       <img src="../../assets/avatar.png" alt="avatar" width="200" height="200" @mouseover="changeImg">
-=======
-      <img src="../assets/avatar.png" alt="avatar" width="200" height="200" @mouseover="choose">
->>>>>>> de43bd18404f56f4aa976179e24e260b10831dbd:src/components/usr-info.vue
       <div class="change" v-show="isImg">
         <label for="file" style="margin-left:5px;">修改头像</label>
         <input id="file" type="file" @click="upFile" style="opacity:0">
