@@ -1,24 +1,28 @@
 <template>
   <div>
-    <div class="center" style="position: relative;">
+    <div class="center" style="position: relative;" @mouseover="changeImg" @mouseout="nochangeImg">
       <img src="../../assets/avatar.png"
            alt="avatar"
            width="200"
-           height="200"
-           @mouseover="changeImg"
-           @mouseout="nochangeImg" />
+           height="200"/>
       <div class="change" v-show="isImg">
-        <label for="file" style="margin-left:5px;">修改头像</label>
+        <label for="file" style="margin-left:250px;">修改头像</label>
         <input id="file" type="file" @click="upFile" style="opacity:0">
       </div>
     </div>
-    <div class="center">
-      <ul>
-        <li>姓名</li>
-        <li>学习方式</li>
-        <li>个人介绍</li>
-        <li>退出登录</li>
-      </ul>
+    <div>
+      <div class="infoList">
+        <div>姓名</div>
+        <div>heyuanqing </div>
+      </div>
+      <div class="infoList">
+        <div>学习方式</div>
+        <div>heyuanqing </div>
+      </div>
+      <div class="infoList">
+        <div>个人介绍</div>
+        <div>heyuanqing </div>
+      </div>     
     </div>
   </div>
 </template>
@@ -31,11 +35,9 @@ export default {
     },
     methods: {
       changeImg() {
-        console.log(1111)
         this.isImg = true
       },
       nochangeImg() {
-        console.log(222)
         this.isImg = false
       },
       upFile() {
@@ -64,4 +66,10 @@ img{
     display:flex;
     justify-content:center
 }
+.infoList{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f8e48d
+}
+
 </style>
