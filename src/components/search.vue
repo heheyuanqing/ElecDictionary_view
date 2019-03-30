@@ -11,9 +11,6 @@
     <div class="word-part">
        <div class="result">
         <word-result :btnContent="btnContent" :process="false"></word-result>
-         <word-result :btnContent="btnContent" :process="false"></word-result>
-          <word-result :btnContent="btnContent" :process="false"></word-result>
-           <word-result :btnContent="btnContent" :process="false"></word-result>
       </div>
     </div>
     <div class="word-part">   
