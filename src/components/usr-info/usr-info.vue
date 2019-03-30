@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="center" style="position: relative;">
-      <img src="../assets/avatar.png" alt="avatar" width="200" height="200" @mouseover="choose">
+      <img src="../../assets/avatar.png"
+           alt="avatar"
+           width="200"
+           height="200"
+           @mouseover="changeImg"
+           @mouseout="nochangeImg" />
       <div class="change" v-show="isImg">
         <label for="file" style="margin-left:5px;">修改头像</label>
         <input id="file" type="file" @click="upFile" style="opacity:0">
@@ -9,29 +14,31 @@
     </div>
     <div class="center">
       <ul>
-      <li>姓名</li>
-      <li>学习方式</li>
-      <li>个人介绍</li>
-      <li>退出登录</li>
-    </ul>
+        <li>姓名</li>
+        <li>学习方式</li>
+        <li>个人介绍</li>
+        <li>退出登录</li>
+      </ul>
     </div>
   </div>
 </template>
 <script>
 export default {
-    data(){
+    data() {
       return {
-        isImg:false
+        isImg: false
       }
     },
-    methods:{
-      choose(){
-        this.isImg = true;
+    methods: {
+      changeImg() {
+        console.log(1111)
+        this.isImg = true
       },
-      noChoose(){
-        this.isImg = false;
+      nochangeImg() {
+        console.log(222)
+        this.isImg = false
       },
-      upFile(){
+      upFile() {
 
       }
     }

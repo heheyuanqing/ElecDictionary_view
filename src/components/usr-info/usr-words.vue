@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-import wordCard from './word-card'
+import wordCard from '../word-card'
 export default {
   components:{
     wordCard
