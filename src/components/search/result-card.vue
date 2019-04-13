@@ -14,10 +14,10 @@
 
 <script>
 export default {
- props:['btnContent','process'],
-  data(){
+ props:[ 'btnContent' ,'process' ],
+  data() {
     return {
-      num:0
+      num: 0
     }
   }
 }

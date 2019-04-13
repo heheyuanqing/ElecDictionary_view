@@ -2,10 +2,10 @@
   <div class="main">
     <div class="title"><img width="200" height="100" src="../../assets/youyong.png" alt="logo"></div>
     <div class="input-part">
-      <input type="text" :value="value" placeholder="姓名">
+      <input type="text" v-model="name" placeholder="姓名">
     </div>
     <div class="input-part">
-      <input type="text" :value="value" placeholder="密码">
+      <input type="password" v-model="psw" placeholder="密码">
     </div>
     <div class="btn-part">
       <button @click="login">登陆</button>
@@ -15,17 +15,27 @@
 </template>
 <script>
 export default {
-  data(){
+  data() {
     return {
-      
+      name: '',
+      psw: '',
     }
   },
-  methods:{
-    login(){
-
+  methods: {
+    login() {
+      this.axios.get('/user', {
+        params: {
+          name: this.name,
+          psw: this.psw
+        }.then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+      })
     },
-    logup(){
-      
+    logup() {
+      this.$router.push({ path: '/usr/logup' })
     }
   }
 }
@@ -53,6 +63,7 @@ input{
   border:1px solid #dddddd;
   border-radius: 6px;
   padding-left: 10px;
+  outline: none;
 }
 button{
   margin-top: 15px;
