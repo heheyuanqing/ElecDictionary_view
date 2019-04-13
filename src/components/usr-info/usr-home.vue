@@ -2,44 +2,71 @@
   <div>
     <div class="center-box">
       <div class="usr-info">
-        <div class="avatar"><img width="100" height="100" src="../../assets/avatar.png" alt="头像"></div>
+        <div class="avatar" @click="gotoSelInfo"><img width="100" height="100" src="../../assets/avatar.png" alt="头像"></div>
         <div class="usr-name">{{name}}</div>
         <div class="everyday-word">
           <div>{{msg}}</div>
         </div>
-     </div>
+      </div>
     </div>
-    <div class="center-box"  >
-      <div style="width:70%" v-if="haveWord">
-        <div class="sel-words"> 我的单词库<button>进入词库</button></div>
+    <div class="center-box">
+      <div style="width:70%" v-if="isShowSelWords">
+        <div class="sel-words"> 我的单词库<button @click="gotoSelWords">进入词库</button></div>
         <div class="words-info">
-           <word-card :btnContent="btnContent" :process="true"></word-card>
-           <word-card :btnContent="btnContent" :process="true"></word-card>
-           <word-card :btnContent="btnContent" :process="true"></word-card>
-           <word-card :btnContent="btnContent" :process="true"></word-card>
-           <word-card :btnContent="btnContent" :process="true"></word-card>
-           <word-card :btnContent="btnContent" :process="true"></word-card>
+          <word-card :btnContent="btnContent" :process="true" v-for="word in selWord" :key="word.id"></word-card>
         </div>
       </div>
-      <div class="sel-words"  v-else>
-         你还没有开通个人词库，请选择<button>开通个人词库</button>
+      <div class="no-sel-words" v-else>
+        你还没有开通个人词库，请选择<button>开通个人词库</button>
       </div>
     </div>
   </div>
 </template>
 <script>
-import wordCard from '../word-card';
+import wordCard from '../word-card'
 export default {
-    components:{
+    components: {
       wordCard
     },
-    data(){
+    data() {
       return {
-        name:"gsjdh",
-        msg:"每天一个单词",
-        haveWord:true,
-        btnContent:"删除"
+        name: '',
+        msg: '每天一个单词',
+        isShowSelWords: false,
+        selWord: [],
+        btnContent: '删除'
       }
+    },
+    methods: {
+      getUsrInfo() {
+        this.axios.get('/', {
+          params: {
+            id: 123
+          }
+        })
+      },
+      getSelWord() {
+        this.axios.get('/', {
+          params: {
+            id: 111
+          }
+        }).then(res => {
+          this.isShowSelWords = true
+          this.selWord = res
+        }).catch(err => {
+          console.log(err)
+        })
+      },
+      gotoSelWords() {
+        this.$router.push({ path: '/sel-words' })
+      },
+      gotoSelInfo() {
+        this.$router.push({ path: '/usr/info' })
+      }
+    },
+    mounted() {
+      this.getUsrInfo()
+      this.getSelWord()
     }
 }
 </script>
@@ -64,13 +91,16 @@ export default {
   flex-basis: 50%;
 }
 .everyday-word{
-  padding-left:15px; 
+  padding-left:15px;
   flex-basis: 20%;
   border-left:1px solid #cacccd;
 }
 .sel-words{
   /* width:70%; */
   border-left: 5px solid #f1d96b;
+  padding-left: 20px;
+}
+.no-sel-words{
   padding-left: 20px;
 }
 .words-info{
@@ -80,7 +110,7 @@ export default {
   justify-content: space-between;
 }
 .words-info > div{
-  width:30%;
+  width: 30%;
   margin-top: 15px;
 }
 button{

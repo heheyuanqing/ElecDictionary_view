@@ -6,7 +6,8 @@ import SignUpUsr from '@/components/usr-sign/sign-up-usr.vue'
 import Search from '@/components/search/search.vue'
 import UsrHome from '@/components/usr-info/usr-home.vue'
 import SelWords from '@/components/usr-info/usr-words.vue'
-import card from '@/components/usr-info/usr-info.vue'
+import UsrInfo from '@/components/usr-info/usr-info.vue'
+import card from '@/components/manager.vue'
 
 Vue.use(Router)
 
@@ -37,6 +38,11 @@ export default new Router({
       path: '/sel-words',
       name: 'sel-words',
       component: SelWords
+    },
+    {
+      path: '/usr/info',
+      name: 'usr-info',
+      component: UsrInfo
     },
     {
       path: '/test',

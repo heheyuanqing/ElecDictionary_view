@@ -13,10 +13,10 @@
 </template>
 <script>
 export default {
-  props:['btnContent','process'],
-  data(){
+  props: ['btnContent', 'process'],
+  data() {
     return {
-      num:0
+      num: 0
     }
   }
 }
@@ -25,7 +25,6 @@ export default {
 .card{
   border:1px solid #ffe057;
   padding: 10px;
-  width: 180px;
   position: relative;
 }
 .title{
@@ -37,8 +36,8 @@ ul li{
   margin-left:5px;
 }
 .pho{
-    position: relative;
-    color:#d4d4d4;
+  position: relative;
+  color:#d4d4d4;
 }
 .pho img{
   position: absolute;
