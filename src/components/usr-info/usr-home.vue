@@ -23,7 +23,7 @@
   </div>
 </template>
 <script>
-import wordCard from '../word-card'
+import wordCard from '../basic/word-card'
 export default {
     components: {
       wordCard
@@ -119,7 +119,7 @@ button{
   border:0;
   margin-left: 5px;
   border-radius:4px;
-  background-color: #f8e48d;
+  background-color: #ffe057;
   color:rgb(10, 10, 9);
 }
 </style>

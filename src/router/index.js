@@ -3,11 +3,11 @@ import Router from 'vue-router'
 import Header from '@/components/header.vue'
 import SignInUsr from '@/components/usr-sign/sign-in.vue'
 import SignUpUsr from '@/components/usr-sign/sign-up-usr.vue'
-import Search from '@/components/search/search.vue'
+import Search from '@/components/index/search.vue'
 import UsrHome from '@/components/usr-info/usr-home.vue'
 import SelWords from '@/components/usr-info/usr-words.vue'
 import UsrInfo from '@/components/usr-info/usr-info.vue'
-import card from '@/components/manager.vue'
+import Manager from '@/components/manager.vue'
 
 Vue.use(Router)
 
@@ -45,9 +45,14 @@ export default new Router({
       component: UsrInfo
     },
     {
-      path: '/test',
-      name: 'test',
-      component: card
-    }
+      path: '/manager',
+      name: 'manager',
+      component: Manager
+    },
+    // {
+    //   path: '/test',
+    //   name: 'test',
+    //   component: card
+    // }
   ]
 })

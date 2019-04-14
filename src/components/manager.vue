@@ -13,16 +13,26 @@
         <div class="sel-words">词库管理</div>
         <div class="handle-words-part">
           <input type="text" placeholder="请输入单词" class="search-word"/>
-          <button>查询</button>
-          <button>添加</button>
+          <button @click="searchWord">查询</button>
+          <button @click="addWord">添加</button>
           <div class="word-list">
             <div>word</div>
             <div>mean</div>
             <div>
-              <img src="../assets/reload.png" alt="更新" width="20" height="20" @click="handleWord">
-              <img src="../assets/garbage.png" alt="删除" width="20" height="20" @click="handleWord" class="icon">
+              <img src="../assets/reload.png" alt="更新" width="20" height="20" @click="updateWord">
+              <img src="../assets/garbage.png" alt="删除" width="20" height="20" @click="deleteWord" class="icon">
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="confirm-box" v-if="isShowHandleWord">
+      <div class="content">
+        <div>word</div>
+        <div>mean</div>
+        <div class="confirm-btn">
+          <button @click="postUpdatInfo">确定</button>
+          <button @click="onCancel">取消</button>
         </div>
       </div>
     </div>
@@ -33,7 +43,52 @@ export default {
     data() {
       return {
         name: '管理员',
+        isShowHandleWord: false,
         errMsg: []
+      }
+    },
+    methods: {
+      updateWord() {
+        this.isShowHandleWord = true
+      },
+      onCancel() {
+        this.isShowHandleWord = false
+      },
+      postUpdatInfo() {
+         this.axios('post', {
+          // 单词id
+        }).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+      },
+      addWord() {
+        this.axios('post', {
+          // 单词id
+        }).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+      },
+      deleteWord() {
+        this.axios('post', {
+          // 单词id
+        }).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+      },
+      searchWord() {
+        this.axios('get', {
+          params: {}
+        }).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
       }
     }
 }
@@ -85,6 +140,33 @@ export default {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #f1d96b;
+}
+.confirm-box{
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom:0;
+  background-color: rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content{
+  position: relative;
+  width: 500px;
+  height: 300px;
+  background-color:white;
+  margin-top: 50px;
+}
+.content > div{
+  text-align: center;
+  margin-top: 8px;
+}
+.confirm-btn{
+  position: absolute;
+  bottom: 20px;
+  left: 30%;
 }
 button{
   width: 100px;

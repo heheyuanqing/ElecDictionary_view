@@ -26,7 +26,7 @@
   </div>
 </template>
 <script>
-import wordCard from '../word-card.vue';
+import wordCard from '../basic/word-card.vue';
 import wordResult from './result-card';
 export default {
   components: {
@@ -70,8 +70,10 @@ input{
   height: 30px;
   border:1px solid #dddddd;
   border-radius: 6px;
+  outline: none;
 }
 button{
+  outline: none;
   margin-top: 15px;
   width: 100px;
   height:30px;

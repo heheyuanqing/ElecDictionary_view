@@ -1,12 +1,11 @@
 <template>
-    <div>
-        <button>{{value}}</button>
-    </div>
+  <button>
+    <span>{{text}}</span>
+  </button>
 </template>
 <script>
 export default {
-    props:['value'],
-    
+    props: ['text'],
 }
 </script>
 <style>
