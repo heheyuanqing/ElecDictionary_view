@@ -37,38 +37,46 @@
           <span><img src="../../assets/close.png" alt="取消" width="16" height="16" @click="onCancel"></span>
         </div>
         <div @click="showInput" v-else>heyuanqing</div>
-      </div>     
+      </div> 
     </div>
+    <div class="info-list-wrapper"><button class="back-btn"  @click="back">返回我的主页</button></div>
   </div>
 </template>
 <script>
 export default {
-    data() {
-      return {
-        isImg: false,
-        isShowInput: false
-      }
-    },
-    methods: {
-      changeImg() {
-        this.isImg = true
-      },
-      nochangeImg() {
-        this.isImg = false
-      },
-      upFile() {
+data() {
+  return {
+    name:'',
+    isImg: false,
+    isShowInput: false
+  }
+},
+created(){
+  this.$cookies.isKey('name') ? this.name = this.$cookies.get('name') :  this.$router.push({ path: '/usr/login' })
+},
+methods: {
+  changeImg() {
+    this.isImg = true
+  },
+  nochangeImg() {
+    this.isImg = false
+  },
+  upFile() {
 
-      },
-      showInput() {
-        this.isShowInput = true
-      },
-      onConfirm() {
-        this.isShowInput = false
-      },
-      onCancel() {
-        this.isShowInput = false
-      }
-    }
+  },
+  showInput() {
+    this.isShowInput = true
+  },
+  onConfirm() {
+    this.isShowInput = false
+  },
+  onCancel() {
+    this.isShowInput = false
+  },
+  back(){
+    this.$router.push({path:'/usr'})
+  }
+}
 }
 </script>
 <style>
@@ -110,5 +118,12 @@ img{
   border-bottom: 1px solid #f8e48d;
   margin-top:20px;
 }
-
+.back-btn{
+  width: 100%;
+  margin: 20px auto;
+  height:30px;
+  border:0;
+  border-radius: 4px;
+  background-color: #ffe057;
+}
 </style>

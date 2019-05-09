@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     confirmSamePsw() {
-      console.log(11)
+     
       if (this.confirmPsw !== this.psw) {
         alert('密码输入不一致,请重新输入')
         this.psw = ''
@@ -34,22 +34,21 @@ export default {
       }
     },
     logup() {
-      console.log(this.axios)
-       this.axios.post('/user', {
+       this.axios.post('/api/signup', {
          name: this.name,
          psw: this.psw
        }).then(res => {
-         console.log(res)
-         this.$router.push({ path: '/usr/logup' })
+         if(res.data.status===200){
+           this.$router.push({ path: '/usr/login' })
+         }
        }).catch(err => {
-         console.log(err)
          alert('注册失败，请重新注册')
        })
     }
   }
 }
 </script>
-<style>
+<style scoped>
 .main{
   width: 100%;
 }

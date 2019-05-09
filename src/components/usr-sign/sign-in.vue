@@ -23,16 +23,23 @@ export default {
   },
   methods: {
     login() {
-      this.axios.get('/user', {
-        params: {
+      this.axios.post('/api/signin', {
           name: this.name,
           psw: this.psw
-        }.then(res => {
-          console.log(res)
+        }).then(res => {
+          const data = res.data
+          if(data.status === 200){
+            alert("登录成功！")
+            this.$cookies.set('name',data.data.usr_no)
+            this.$store.commit('changeUsr',data.data)
+            data.flag === 0 ? this.$router.push({ path: '/manager' }) : this.$router.push({ path: '/usr' })
+          }
+          if(data.status === 204){
+            alert("该用户还未注册，请先注册")
+          }
         }).catch(err => {
           console.log(err)
         })
-      })
     },
     logup() {
       this.$router.push({ path: '/usr/logup' })

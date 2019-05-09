@@ -2,27 +2,25 @@
   <div class="main">
     <div class="logo"><img width="200" height="100" src="../../assets/logo.png" alt="logo"></div>
     <div class="input-part">
-      <input type="text" :value="value">
+      <input type="text" v-model="word">
     </div>
     <div class="btn-part">
       <button @click="searchWord">搜索</button>
-      <button style="margin-left:10px;">我的词库</button>
+      <button style="margin-left:10px;" @click="intoSelWord">我的词库</button>
     </div>
-    <div class="word-part">
+    <div class="word-part" v-if="showReault">
       <div class="result">
-        <word-result :btnContent="btnContent" :process="false"></word-result>
+        <word-result
+          :btnContent="btnContent"
+          :process="false"
+          :word="resultWord"/>
       </div>
     </div>
-    <div class="word-part">
+    <!-- <div class="word-part">
       <div class="content">
         <word-card :btnContent="btnContent" :process="false"></word-card>
-        <word-card :btnContent="btnContent" :process="false"></word-card>
-        <word-card :btnContent="btnContent" :process="false"></word-card>
-        <word-card :btnContent="btnContent" :process="false"></word-card>
-        <word-card :btnContent="btnContent" :process="false"></word-card>
-        <word-card :btnContent="btnContent" :process="false"></word-card>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
@@ -36,16 +34,49 @@ export default {
   data() {
     return {
       word: '',
-     btnContent: '加入我的词库'
+      btnContent: '加入我的词库',
+      resultWord:{},
+      showReault:false,
+      intersetWord:[]
     }
   },
   methods: {
+    intoSelWord(){ 
+      this.$cookies.isKey('name') ? this.$router.push({ path: '/sel-words' }) : this.$router.push({ path: '/usr/login' })
+    },
     searchWord() {
       const word = this.word
-      this.word = ''
       //请求后台搜索
-      alert(111)
+      this.axios.get(`/api/search`,{
+        params:{
+          word
+        }
+      }).then( res =>{
+        if(res.status === 200){
+          this.resultWord =res.data.msg
+          this.showReault = true
+        }      
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    getUsrInterset(){
+      this.axios.get('/',{
+        params:{
+          name
+        }
+      }).then(res => {
+
+      }).catch(err => {
+        console.log(err)
+      })
     }
+  },
+  created(){
+    
+  },
+  mounted(){
+    this.getUsrInterset()
   }
 }
 </script>
@@ -65,12 +96,13 @@ export default {
   display:flex;
   justify-content:center;
 }
-input{
+.input-part input{
   width: 40%;
   height: 30px;
   border:1px solid #dddddd;
   border-radius: 6px;
   outline: none;
+  padding-left:15px;
 }
 button{
   outline: none;

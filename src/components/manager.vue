@@ -12,12 +12,12 @@
         <div v-if="errMsg" class="err-msg">暂时没有人报错哦～</div>
         <div class="sel-words">词库管理</div>
         <div class="handle-words-part">
-          <input type="text" placeholder="请输入单词" class="search-word"/>
+          <input type="text" placeholder="请输入单词" class="search-word" v-model="inputVal"/>
           <button @click="searchWord">查询</button>
           <button @click="addWord">添加</button>
-          <div class="word-list">
-            <div>word</div>
-            <div>mean</div>
+          <div class="word-list" v-if="targetW.en">
+            <div>{{targetW.en}}</div>
+            <div>{{targetW.cn}}</div>
             <div>
               <img src="../assets/reload.png" alt="更新" width="20" height="20" @click="updateWord">
               <img src="../assets/garbage.png" alt="删除" width="20" height="20" @click="deleteWord" class="icon">
@@ -26,10 +26,14 @@
         </div>
       </div>
     </div>
-    <div class="confirm-box" v-if="isShowHandleWord">
+    <div class="confirm-box" v-if="isShowHandleWord && action">
       <div class="content">
-        <div>word</div>
-        <div>mean</div>
+        <div v-if="action==='delete'">{{targetW.en}}</div>
+        <div v-if="action==='delete'">{{targetW.cn}}</div>
+        <div v-if="action==='update'"><input type="text" :placeholder="targetW.en" class="change-word" v-model="en"/></div>
+        <div v-if="action==='update'"><input type="text" :placeholder="targetW.en" class="change-word" v-model="cn"/></div>
+        <div v-if="action==='add'"><input type="text" placeholder="英语单词" class="change-word" v-model="en"/></div>
+        <div v-if="action==='add'"><input type="text" placeholder="中文释义" class="change-word" v-model="cn"/></div>
         <div class="confirm-btn">
           <button @click="postUpdatInfo">确定</button>
           <button @click="onCancel">取消</button>
@@ -39,58 +43,80 @@
   </div>
 </template>
 <script>
-export default {
-    data() {
-      return {
-        name: '管理员',
-        isShowHandleWord: false,
-        errMsg: []
-      }
-    },
-    methods: {
-      updateWord() {
-        this.isShowHandleWord = true
-      },
-      onCancel() {
-        this.isShowHandleWord = false
-      },
-      postUpdatInfo() {
-         this.axios('post', {
-          // 单词id
-        }).then(res => {
-          console.log(res)
-        }).catch(err => {
-          console.log(err)
-        })
-      },
-      addWord() {
-        this.axios('post', {
-          // 单词id
-        }).then(res => {
-          console.log(res)
-        }).catch(err => {
-          console.log(err)
-        })
-      },
-      deleteWord() {
-        this.axios('post', {
-          // 单词id
-        }).then(res => {
-          console.log(res)
-        }).catch(err => {
-          console.log(err)
-        })
-      },
-      searchWord() {
-        this.axios('get', {
-          params: {}
-        }).then(res => {
-          console.log(res)
-        }).catch(err => {
-          console.log(err)
-        })
-      }
+export default {  
+  data() {
+    return {
+      name: '管理员',
+      isShowHandleWord: false,
+      inputVal:'',
+      errMsg: [],
+      targetW:{},
+      action:'',
+      en:'',
+      cn:''
     }
+  },
+  methods: {
+    updateWord() {
+      this.isShowHandleWord = true
+      this.action = "update"
+    },
+    onCancel() {
+      this.isShowHandleWord = false
+    },
+    addWord() {
+      this.isShowHandleWord = true
+      this.action = "add"
+    },
+    deleteWord() {
+      this.isShowHandleWord = true
+      this.action = "delete"
+    },
+    postUpdatInfo() {
+      switch (this.action) {
+        case 'add': this.axios.post('/api/addIntoWords', {
+                      word:{en:this.en,cn:this.cn}
+                    }).then(res => {
+                      console.log(res)
+                      this.isShowHandleWord=false
+                      alert(res.data.msg)
+                    }).catch(err => {
+                      console.log(err)
+                    });break;
+        case 'delete':this.axios.post('/api/deleteWords', {
+                      word:this.inputVal
+                    }).then(res => {
+                      this.isShowHandleWord=false
+                      alert(res.data.msg)
+                    }).catch(err => {
+                      console.log(err)
+                    });break;
+        case 'update':this.axios.post('/api/updateWord', {
+                      word:{en:this.en,cn:this.cn}
+                    }).then(res => {
+                      this.isShowHandleWord=false
+                      alert(res.data.msg)
+                    }).catch(err => {
+                      console.log(err)
+                    });break;
+      }
+     
+
+    },
+    searchWord() {
+      this.axios.get(`/api/search`,{
+        params:{
+          word:this.inputVal
+        }
+      }).then( res =>{
+        if(res.status === 200){
+          this.targetW =res.data.msg
+        }      
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+  }
 }
 </script>
 <style>
@@ -161,7 +187,14 @@ export default {
 }
 .content > div{
   text-align: center;
-  margin-top: 8px;
+  margin-top: 38px;
+}
+.change-word{
+  padding-left: 8px;
+  height: 40px;
+  width: 70%;
+  border-radius: 10px;
+  outline: none;
 }
 .confirm-btn{
   position: absolute;

@@ -5,11 +5,12 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import store from './vuex'
+import store from './vuex/index'
+import vueCookie from 'vue-cookies'
 Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios)
-
+Vue.use(vueCookie)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

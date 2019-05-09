@@ -8,6 +8,9 @@ import UsrHome from '@/components/usr-info/usr-home.vue'
 import SelWords from '@/components/usr-info/usr-words.vue'
 import UsrInfo from '@/components/usr-info/usr-info.vue'
 import Manager from '@/components/manager.vue'
+import TestPage from '@/components/stu/test-page.vue'
+import StuPage from '@/components/stu/stu-page.vue'
+import usrTestPage from '@/components/test/page.vue'
 
 Vue.use(Router)
 
@@ -49,10 +52,20 @@ export default new Router({
       name: 'manager',
       component: Manager
     },
-    // {
-    //   path: '/test',
-    //   name: 'test',
-    //   component: card
-    // }
+    {
+      path: '/test-page',
+      name: 'test-page',
+      component: TestPage,
+    },
+    {
+      path: '/stu-page',
+      name: 'stu-page',
+      component: StuPage
+    },
+    {
+      path:'/usr-test',
+      name:'usr-test',
+      component:usrTestPage
+    }
   ]
 })
